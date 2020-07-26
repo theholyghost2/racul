@@ -5,3 +5,5 @@ Synopsis :
 
 racul features a scheme compiler and interpreter (REPL) with a once 
 bootstrappable command for use in the raku compiler.
+
+The system should become modularized.
