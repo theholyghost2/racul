@@ -1,11 +1,27 @@
 /* Copyright (C) The Holy Ghost 2020. See the LICENSE file for details */
 
+/* NOTE (Mon 07/27/2020) :
+ * This file contains raw symbols in the sense that these contain a hexadecimal
+ * in _Sym which is a number for storing the symbol. Then,
+ * the _XPtr structure has the raw lambda or variable in itself, these count
+ * as unprocessed symbols, which have no binding to a value nor have they been
+ * classified as the true symboltable entities, _Variable and Lambda_ (see
+ * the files variablesymbol.h and lambdasymbol.h.) Each of these includes
+ * the _XSymbol from these primitive variables.
+ *
+ * One can say that _XSymbol can be used as temporary object for would-be 
+ * stored functions and variables. For a simple symboltable _Variable and
+ * _Lambda should be enough. This does not provide for futures or heavily
+ * threaded systems, as an OOP example.
+ */
+
+
 /* Hex system for ELF */
 typedef int Hex;
 
 typedef struct _sym {
 	Hex h;
-	//FIXME
+	/* FIXME */
 } *_Sym;
 
 # define cast_sym_to(hex, sym) \
