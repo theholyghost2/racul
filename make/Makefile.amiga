@@ -3,16 +3,16 @@
 ### This should be run nat 
 ### FIXME : This should be run natively, as it uses less resources for Amiga C 
 
-CC=vbcc
-AS=vbasm
-LD=vlink
+CC=cc
+AS=asm
+LD=ld
 
 OBJS= src/symbols/lambdasymbol.o \
-	src/symbols/variablesymbol.o \ 
+	src/symbols/variablesymbol.o \  ### These 2 files should do
 
 
 all: ${OBJS}
 	${LD} -o libracul.o ${OBJS}  
 
 .asm.o: ${AS} $<
-.c.o: ${CC} -Isrc/symbols2 -c $<  ### FIXME -I
+.c.o: ${CC} -Isrc/symbols -c $<  ### FIXME -I
