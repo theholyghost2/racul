@@ -1,10 +1,15 @@
 ### Makefile for cc, the UNIX C compiler
 
 CC=cc
+LD=ld
 
-OBJS= \
+OBJS= src/symbols/lambdasymbol.o \
+	src/symbols/variablesymbol.o \
 
 all: ${OBJS}
-	${CC} -o libracul.so ${OBJS}  
+	${LD} -o libracul.so ${OBJS}  
+
+clean:
+	rm -f libracul.so ${OBJS}
 
 .c.o: ${CC} -c $<

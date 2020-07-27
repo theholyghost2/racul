@@ -8,7 +8,7 @@ CC=vbcc
 AS=vbasm
 LD=vlink
 
-OBJS= \
+OBJS= src/symbols2/ \
 
 
 all: ${OBJS}
