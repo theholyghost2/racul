@@ -1,0 +1,18 @@
+### Makefile for Amiga Computers (based on the M68000 processor series, not
+### PowerPC class machines.)
+### Using vbcc (a amiga C cross-compiler for Windows and UNIXen)
+
+### FIXME : linker is ok, but vbcc outputs .asm files 
+
+CC=vbcc
+AS=vbasm
+LD=vlink
+
+OBJS= \
+
+
+all: ${OBJS}
+	${LD} -o libracul.o ${OBJS}  
+
+.asm.o: ${AS} $<
+.c.o: ${CC} -c $<

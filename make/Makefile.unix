@@ -1,0 +1,10 @@
+### Makefile for cc, the UNIX C compiler
+
+CC=cc
+
+OBJS= \
+
+all: ${OBJS}
+	${CC} -o libracul.so ${OBJS}  
+
+.c.o: ${CC} -c $<
