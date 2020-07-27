@@ -5,6 +5,8 @@ LD=ld
 
 OBJS= src/symbols/lambdasymbol.o \
 	src/symbols/variablesymbol.o \
+	src/symbols/boundsymbol.o \
+	src/symbols/freesymbol.o \
 
 all: ${OBJS}
 	${LD} -o libracul.so ${OBJS}  
