@@ -15,4 +15,4 @@ all: ${OBJS}
 	${LD} -o libracul.o ${OBJS}  
 
 .asm.o: ${AS} $<
-.c.o: ${CC} -c $<
+.c.o: ${CC} -Isrc/symbols2 -c $<  ### FIXME -I

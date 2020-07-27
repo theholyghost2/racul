@@ -12,4 +12,4 @@ all: ${OBJS}
 clean:
 	rm -f libracul.so ${OBJS}
 
-.c.o: ${CC} -c $<
+.c.o: ${CC} -I./src/symbols -c $<
