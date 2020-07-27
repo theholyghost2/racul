@@ -1,0 +1,17 @@
+### Makefile for cc, the UNIX C compiler (system is tuned for IRIX)
+
+CC=cc
+LD=ld
+
+OBJS= src/symbols/lambdasymbol.o \
+	src/symbols/variablesymbol.o \
+	src/symbols/boundsymbol.o \
+	src/symbols/freesymbol.o \
+
+all: ${OBJS}
+	${LD} -o libracul.so ${OBJS}  
+
+clean:
+	rm -f libracul.so ${OBJS}
+
+.c.o: ${CC} -I./src/symbols -c $< ### FIXME compiler flags on IRIX/nekoware cc
