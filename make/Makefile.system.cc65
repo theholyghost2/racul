@@ -1,0 +1,15 @@
+### Makefile for the cc65 compiler (including Nintendo NES, Commodore 64 and
+### other 6502 processor based machines, cc65 is available for free on 
+### the internet
+
+CC=cc65
+LD=ld65
+
+OBJS= src/symbols/lambdasymbol.o \
+	src/symbols/variablesymbol.o \  ### These 2 files should do
+
+
+all: ${OBJS}
+	${LD} -o libracul.o ${OBJS}  
+
+.c.o: ${CC} -Isrc/symbols -c $<  ### FIXME -I
