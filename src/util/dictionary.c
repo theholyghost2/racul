@@ -81,17 +81,17 @@ void search_dictionary(void *key, DictionaryCorePtr d)
 void delete_from_dictionary(void *key, DictionaryCorePtr d)
 {
 	int len = sizeof(d) / sizeof PairPtr;
+	PairPtr p = *d;
 
 	while (*d++->key != key)
-		;
+		p++;
 
 	if (*d->key != NULL)
 		free(*d->key);
 	if (*d->value != NULL)
 		free(*d->value);
 
-	*d = ++(*d);
-	free(*d - 1);
-
+	free(*d++);
+	p = *d;	
 }
 
