@@ -45,11 +45,15 @@ void free_dictionary(DictionaryCorePtr d)
 }
 
 /* The dictionary has no NULL keys */
-void add_to_dictionary(void *key, void *value, DictionaryCorePtr d)
+void add_to_dictionary(void *xkey, void *xvalue, DictionaryCorePtr d)
 {
 	PairPtr p = (PairPtr)malloc(sizeof PairPtr);
 	int len = sizeof(d) / sizeof PairPtr;
+	KeyPtr key = (KeyPtr)malloc(sizeof KeyPtr); 
+	ValuePtr value = (ValuePtr)malloc(sizeof ValuePtr); 
 
+	key->x = xkey;
+	value->y = xvalue;
 	p->key = key;
 	p->value = value;
 	
