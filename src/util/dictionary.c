@@ -35,7 +35,9 @@ void free_dictionary(DictionaryCorePtr d)
 			if (*d->value != NULL)
 				free(*d->value);
 
-			d++;
+			free(*d);
+
+			*d++;
 
 	} while (--len >= 0);
 
