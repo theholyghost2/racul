@@ -85,6 +85,8 @@ void delete_from_dictionary(void *key, DictionaryCorePtr d)
 	while (*d++->key != key)
 		;
 
+	free(*d - 1);
+
 	*d = ++(*d);
 }
 
