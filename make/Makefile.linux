@@ -1,6 +1,6 @@
 ### Makefile for cc, the UNIX C compiler
 
-CC=cc
+CC=gcc
 LD=ld
 
 OBJS= src/symbols/lambdasymbol.o \
@@ -10,7 +10,7 @@ OBJS= src/symbols/lambdasymbol.o \
 	src/api/api.symbols.o \
 
 all: ${OBJS}
-	${LD} -o libracul.so ${OBJS}  
+	${CC} -shared -o libracul.so ${OBJS}  
 
 clean:
 	rm -f libracul.so ${OBJS}
