@@ -36,8 +36,8 @@ void free_dictionary(DictionaryCorePtr);
 void add_to_dictionary(void *, void *, DictionaryCorePtr);
 void add_to_dictionary_hexkey(int, void *, DictionaryCorePtr);
 void add_to_dictionary_hexkey_hexsymbol(int, int, void *, DictionaryCorePtr);
-void search_dictionary(void *, DictionaryCorePtr);
-void search_dictionary_hexkey(int, DictionaryCorePtr);
+void* search_dictionary(void *, DictionaryCorePtr);
+void* search_dictionary_hexkey(int, DictionaryCorePtr);
 void delete_from_dictionary(void *, DictionaryCorePtr);
 void delete_from_dictionary_hexkey(int, DictionaryCorePtr);
 

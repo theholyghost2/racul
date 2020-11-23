@@ -23,11 +23,25 @@ void free_hash(HashCorePtr hp)
 /* get, set and access */
 
 /* The hash has no NULL keys (FIXME if needed) */
-void add_to_hash(void *, void *, HashCorePtr)
-{}
+void add_to_hash(void *key, void *value, HashCorePtr hp)
+{
+	add_to_dictionary(key, value, hp->dict);
+}
 
-void search_hash(void *, HashCorePtr)
-{}
+void add_to_hash_hexkey(int xi, void *value, HashCorePtr hp)
+{
+	add_to_dictionary_hexkey(xi, value, hp->dict);
+}
+
+void search_hash(void *key, HashCorePtr hp)
+{
+	return (search_dictionary_hexkey(key, hp->dict));
+}
+
+void search_hash_hexkey(int xi, HashCorePtr hp)
+{
+	return (search_dictionary_hexkey(xi, hp->dict));
+}
 
 void delete_from_hash(void *, HashCorePtr)
 {}
