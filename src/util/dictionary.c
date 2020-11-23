@@ -45,7 +45,7 @@ void free_dictionary(DictionaryCorePtr d)
 }
 
 /* The dictionary has no NULL keys */
-void add_to_dictionary(void *xkey, void *xvalue, DictionaryCorePtr d)
+void add_to_dictionary(void *xkey, void *yvalue, DictionaryCorePtr d)
 {
 	DPairPtr p = (DPairPtr)malloc(sizeof DPairPtr);
 	int len = sizeof(d) / sizeof DPairPtr;
@@ -53,7 +53,53 @@ void add_to_dictionary(void *xkey, void *xvalue, DictionaryCorePtr d)
 	DValuePtr value = (DValuePtr)malloc(sizeof DValuePtr); 
 
 	key->x = xkey;
-	value->y = xvalue;
+	key->i = INT_MAX;
+	value->i = INT_MAX;
+	value->y = yvalue;
+	p->key = key;
+	p->value = value;
+	
+	while (len-- >= 0 && *d++->key != NULL)
+		;
+
+	*d = p;
+
+	return;
+}
+
+void add_to_dictionary_hexkey(int xkey, void *yvalue, DictionaryCorePtr d)
+{
+	DPairPtr p = (DPairPtr)malloc(sizeof DPairPtr);
+	int len = sizeof(d) / sizeof DPairPtr;
+	DKeyPtr key = (DKeyPtr)malloc(sizeof DKeyPtr); 
+	DValuePtr value = (DValuePtr)malloc(sizeof DValuePtr); 
+
+	key->i = xkey;
+	key->x = NULL;
+	value->i = INT_MAX;
+	value->y = yvalue;
+	p->key = key;
+	p->value = value;
+	
+	while (len-- >= 0 && *d++->key != NULL)
+		;
+
+	*d = p;
+
+	return;
+}
+
+void add_to_dictionary_hexkey_hexsymbol(int xkey, int yi, void *yvalue, DictionaryCorePtr d)
+{
+	DPairPtr p = (DPairPtr)malloc(sizeof DPairPtr);
+	int len = sizeof(d) / sizeof DPairPtr;
+	DKeyPtr key = (DKeyPtr)malloc(sizeof DKeyPtr); 
+	DValuePtr value = (DValuePtr)malloc(sizeof DValuePtr); 
+
+	key->i = xkey;
+	key->x = NULL;
+	value->i = yi;
+	value->y = yvalue;
 	p->key = key;
 	p->value = value;
 	
@@ -69,7 +115,20 @@ void search_dictionary(void *key, DictionaryCorePtr d)
 {
 	int len = sizeof(d) / sizeof DPairPtr;
 
-	while (*d++->key != key)
+	while (*d++->key->x != key) // FIXME holly, maybe memcmp
+		;
+
+	if (len <= 0)
+		return NULL;
+	else 
+		return (*d--)->value;
+}
+
+void search_dictionary_hexkey(int key, DictionaryCorePtr d)
+{
+	int len = sizeof(d) / sizeof DPairPtr;
+
+	while (*d++->key->i != key)
 		;
 
 	if (len <= 0)
@@ -83,7 +142,7 @@ void delete_from_dictionary(void *key, DictionaryCorePtr d)
 	int len = sizeof(d) / sizeof DPairPtr;
 	DPairPtr p = *d;
 
-	while (*d++->key != key)
+	while (*d++->key->x != key)
 		p++;
 
 	if (*d->key != NULL)
@@ -94,4 +153,22 @@ void delete_from_dictionary(void *key, DictionaryCorePtr d)
 	free(*d++);
 	p = *d;	
 }
+
+void delete_from_dictionary_hexkey(int key, DictionaryCorePtr d)
+{
+	int len = sizeof(d) / sizeof DPairPtr;
+	DPairPtr p = *d;
+
+	while (*d++->key->i != key)
+		p++;
+
+	if (*d->key != NULL)
+		free(*d->key);
+	if (*d->value != NULL)
+		free(*d->value);
+
+	free(*d++);
+	p = *d;	
+}
+
 
