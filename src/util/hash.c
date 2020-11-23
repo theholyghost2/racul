@@ -7,15 +7,17 @@ HashCorePtr make_hash(long len, HashCorePtr hp)
 {
 	DictionaryCorePtr dcp = hashdict(h);
 	hp->dict = make_dictionary(len, dcp);
-	//FIXME hash func
-	
+	//hash func
+	hp->hashf = make_hashfunction(hp);	
+
 	return hp;
 }
 
 void free_hash(HashCorePtr hp)
 {
 	free_dictionary(hashdict(h));
-	//FIXME hash func
+	// hash func
+	free_hashfunction(hp);
 }
 
 /* get, set and access */

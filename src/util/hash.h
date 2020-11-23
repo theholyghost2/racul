@@ -3,7 +3,7 @@
 #include "hashfunction.h"
 
 typedef struct _hash {
-	HashFunctionPtr hfp; 
+	_HashFunctionPtr hashf; 
 	DictionaryCorePtr dict;
 } *HashCorePtr; 
 
