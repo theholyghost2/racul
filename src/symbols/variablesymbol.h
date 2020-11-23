@@ -4,7 +4,7 @@
 
 typedef struct _var {
 	void *blob;
-	int typeid;
+	int typeid; // FIXME holly
 	_XSymbol x;
 } *_Variable;
 

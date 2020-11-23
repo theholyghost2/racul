@@ -48,5 +48,15 @@ typedef struct _xsymbol {
 # define xptr(xsymbol) \
        return xsymbol->x;
 
+/* Most used functions : hexadecimal code, variable and lambda accessors */
+
+#define hex(xsymbol) \
+	return xsym(xsymbol)->h
+
+#define variable(xsymbol) \
+	return xptr(xsymbol)->xvariable
+
+#define lambda(xsymbol) \
+	return xptr(xsymbol)->xlambda
 
 
