@@ -14,7 +14,7 @@ DictionaryCorePtr make_dictionary(long len, DictionaryCorePtr d) {
 	}
 #endif
 
-	d = (DictionaryCorePtr)malloc(len * sizeof PairPtr);
+	d = (DictionaryCorePtr)malloc(len * sizeof DPairPtr);
 
 	do {
 		*d++->key = NULL;
@@ -26,7 +26,7 @@ DictionaryCorePtr make_dictionary(long len, DictionaryCorePtr d) {
 
 void free_dictionary(DictionaryCorePtr d)
 {
-	int len = sizeof(d) / sizeof PairPtr;
+	int len = sizeof(d) / sizeof DPairPtr;
 
 	do {
 		if (*d != NULL) {
@@ -47,10 +47,10 @@ void free_dictionary(DictionaryCorePtr d)
 /* The dictionary has no NULL keys */
 void add_to_dictionary(void *xkey, void *xvalue, DictionaryCorePtr d)
 {
-	PairPtr p = (PairPtr)malloc(sizeof PairPtr);
-	int len = sizeof(d) / sizeof PairPtr;
-	KeyPtr key = (KeyPtr)malloc(sizeof KeyPtr); 
-	ValuePtr value = (ValuePtr)malloc(sizeof ValuePtr); 
+	DPairPtr p = (DPairPtr)malloc(sizeof DPairPtr);
+	int len = sizeof(d) / sizeof DPairPtr;
+	DKeyPtr key = (DKeyPtr)malloc(sizeof DKeyPtr); 
+	DValuePtr value = (DValuePtr)malloc(sizeof DValuePtr); 
 
 	key->x = xkey;
 	value->y = xvalue;
@@ -67,7 +67,7 @@ void add_to_dictionary(void *xkey, void *xvalue, DictionaryCorePtr d)
 
 void search_dictionary(void *key, DictionaryCorePtr d)
 {
-	int len = sizeof(d) / sizeof PairPtr;
+	int len = sizeof(d) / sizeof DPairPtr;
 
 	while (*d++->key != key)
 		;
@@ -80,8 +80,8 @@ void search_dictionary(void *key, DictionaryCorePtr d)
 
 void delete_from_dictionary(void *key, DictionaryCorePtr d)
 {
-	int len = sizeof(d) / sizeof PairPtr;
-	PairPtr p = *d;
+	int len = sizeof(d) / sizeof DPairPtr;
+	DPairPtr p = *d;
 
 	while (*d++->key != key)
 		p++;

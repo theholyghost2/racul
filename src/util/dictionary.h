@@ -2,24 +2,24 @@
 
 typedef struct _key {
 	void *x;
-} Key;
+} DKey;
 
-typedef struct _key *KeyPtr;
+typedef struct _key *DKeyPtr;
 
 typedef struct _value {
 	void *y;
-} Value;
+} DValue;
 
-typedef struct _value *ValuePtr;
+typedef struct _value *DValuePtr;
 
 typedef struct _pair {
-	KeyPtr key;
-	ValuePtr value;
-} Pair;
+	DKeyPtr key;
+	DValuePtr value;
+} DPair;
 
-typedef struct _pair *PairPtr;
+typedef struct _pair *DPairPtr;
 
-typedef PairPtr *DictionaryCorePtr;
+typedef DPairPtr *DictionaryCorePtr;
 
 /* constructors, destructors */
 
