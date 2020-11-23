@@ -40,23 +40,34 @@ typedef struct _xsymbol {
 	_XPtr x;
 } *_XSymbol;
 
-/* X accessors */
+/* _XSymbol accessors */
 
-# define xsym(xsymbol) \
-       return xsymbol->symbol;
+# define xsym(symbol) \
+       return symbol->symbol;
 
-# define xptr(xsymbol) \
-       return xsymbol->x;
+# define xptr(symbol) \
+       return symbol->x;
 
 /* Most used functions : hexadecimal code, variable and lambda accessors */
 
-#define hex(xsymbol) \
-	return xsym(xsymbol)->h
+#define hex(symbol) \
+	return xsym(symbol)->h
 
-#define variable(xsymbol) \
-	return xptr(xsymbol)->xvariable
+#define variable(symbol) \
+	return xptr(symbol)->xvariable
 
-#define lambda(xsymbol) \
-	return xptr(xsymbol)->xlambda
+#define lambda(symbol) \
+	return xptr(symbol)->xlambda
+
+/* Does the _XSymbol have X defined ? */
+
+#define hexp(symbol) \
+	return hex(symbol) != (void*)0 ? 1 : 0
+
+#define variablep(symbol) \
+	return variable(symbol) != (void*)0 ? 1 : 0
+
+#define hexp(symbol) \
+	return lambda(symbol) != (void*)0 ? 1 : 0
 
 

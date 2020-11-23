@@ -3,11 +3,20 @@
 #include "variablesymbol.h"
 #include "lambdasymbol.h"
 
+/* bound symbol declaration */
+
 typedef struct _xbind {
 	void *value;
 	_Variable var;
 	_Lambda lambda;
-} *_Xbind;
+} *_XBind;
+
+/* it's handle */
+
+typedef struct _xkey {
+	_XBind xkey;
+	//FIXME holly key
+} *_XKey;
 
 /* accessors */
 
@@ -17,21 +26,21 @@ typedef struct _xbind {
 # define _bind_lambda(xb) \
 	return xb->lambda
 
-/* Is the lambda bound ? */ /* FIXME cast 0 instead of NULL */
+/* Is the lambda bound ? */ 
 # define _bound_lambdap(xb) \
-	return xb->lambda != NULL ? 1 : 0 \
+	return xb->lambda != (void*)0 ? 1 : 0 \
 
-/* Is the variable bound ? */ /* FIXME cast 0 instead of NULL */
+/* Is the variable bound ? */ 
 # define _bound_variablep(xb) \
-	return xb->var != NULL ? 1 : 0 \
+	return xb->var != (void*)0 ? 1 : 0 \
 
-/* Is anything bound ? */ /* FIXME cast 0 instead of NULL */
+/* Is anything bound ? */
 # define _boundp (xb) \
-	return (xb->lambda != NULL || xb->var != NULL) ? 1 : 0 \	
+	return (xb->lambda != (void*)0 || xb->var != (void*)0) ? 1 : 0 \	
 
-/* rx is the returned _Xbind */
-# define _bind (typeid, value, xkey, rx) \
-	xkey->typeid = typeid \
-	xkey->blob = value \
-	rx->xkey = xkey \
+/* Fill in value and typeid of _XBind, rx is the returned _XKey */
+# define _bind (typeid, value, xb, xkey) \
+	xb->typeid = typeid \
+	xb->blob = value \
+	rx->xkey = xb \
 
