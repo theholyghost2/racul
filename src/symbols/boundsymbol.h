@@ -11,10 +11,10 @@ typedef struct _xbind {
 	_Lambda lambda;
 } *_XBind;
 
-/* it's handle */
+/* bound symbol's handle */
 
 typedef struct _xkey {
-	_XBind xkey;
+	_XBind xb;
 	//FIXME holly key
 } *_XKey;
 
@@ -39,8 +39,8 @@ typedef struct _xkey {
 	return (xb->lambda != (void*)0 || xb->var != (void*)0) ? 1 : 0 \	
 
 /* Fill in value and typeid of _XBind, rx is the returned _XKey */
-# define _bind (typeid, value, xb, xkey) \
+# define _bind (typeid, value, xb, rx) \
 	xb->typeid = typeid \
 	xb->blob = value \
-	rx->xkey = xb \
+	rx->xb = xb \
 
