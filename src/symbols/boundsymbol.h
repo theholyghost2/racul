@@ -3,7 +3,13 @@
 #include "variablesymbol.h"
 #include "lambdasymbol.h"
 
-/* bound symbol declaration */
+/**********************************************************************
+ *
+ * NOTE : use _XKey handle for use in the symboltable 
+ *
+***********************************************************************/
+
+/* bound symbol type definition */
 
 typedef struct _xbind {
 	void *value;
@@ -17,6 +23,13 @@ typedef struct _xkey {
 	_XBind xb;
 	//FIXME holly key
 } *_XKey;
+
+/* Fill in value and typeid of _XBind, rx is the returned _XKey */
+# define _bind (typeid, value, xb, xkey) \
+	xb->typeid = typeid \
+	xb->value = value \
+	xkey->xb = xb \
+
 
 /* accessors */
 
@@ -37,10 +50,4 @@ typedef struct _xkey {
 /* Is anything bound ? */
 # define _boundp (xb) \
 	return (xb->lambda != (void*)0 || xb->var != (void*)0) ? 1 : 0 \	
-
-/* Fill in value and typeid of _XBind, rx is the returned _XKey */
-# define _bind (typeid, value, xb, rx) \
-	xb->typeid = typeid \
-	xb->blob = value \
-	rx->xb = xb \
 
