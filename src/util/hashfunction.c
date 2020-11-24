@@ -15,8 +15,9 @@ _HashFunctionPtr make_hashfunction(_HashFunctionPtr hfp)
 #else
 	hfp->func = (long)(*)(unsigned long)(&(hash_with_modulus));
 #endif
+	return hfp;
 }
-_HashFunctionPtr free_hashfunction(_HashFunctionPtr hfp)
+void free_hashfunction(_HashFunctionPtr hfp)
 {
 	hfp->func = NULL;
 }

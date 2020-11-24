@@ -4,6 +4,8 @@
 
 #include <stdlib.h> /* includes NULL and memory management (malloc, free) */
 
+/* FIXME maybe unsigned long ints */
+
 DictionaryCorePtr make_dictionary(long len, DictionaryCorePtr d) {
 
 #ifdef _DEBUG

@@ -1,5 +1,7 @@
 /* Copyright (C) The Holy Ghost 2020. See the LICENSE file for details */
 
+/* prefixed logical validities */
+
 const char* validities[] = {
 	/* commutativity */
 	"and p q <-> and q p",

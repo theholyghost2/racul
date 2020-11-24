@@ -8,14 +8,30 @@
 #define OPERATOR_LEFT_PARENS "("
 #define OPERATOR_RIGHT_PARENS ")"
 
-/* symbol between anterior and posterior */
-#define COMPARE "<->" 
-
-#define OPERATOR_FUNCTION_CALL "funcall"
-
 /* It follows that */
 #define STRIDE "->"
 
+/* symbol between anterior and posterior */
+#define COMPARE "<->" 
+
+/****
+ * NOTE : use of math and OOP functions in the theorem prover 
+ ****/
+
+#define OPERATOR_FUNCTION_CALL "funcall"
+#define OPERATOR_FUNCTION_COMPOSITE_CALL "funcallcomposite"
+
+/* math validity functions, see functions.h */
+#define OPERATOR_FUNCTION_PLUS "+"
+#define OPERATOR_FUNCTION_MINUS "-"
+#define OPERATOR_FUNCTION_PRODUCT "*"
+#define OPERATOR_FUNCTION_DIVISION "/"
+#define OPERATOR_FUNCTION_++ "++"
+#define OPERATOR_FUNCTION_-- "--"
+
+/* composite functions */
+
+#define OPERATOR_FUNCTION_ITERATOR "iterator"
 /* Theorem Prover predicate */
 
 /**************************************************************************

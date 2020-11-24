@@ -4,4 +4,8 @@
 
 #include "tppredicate.h"
 
-const char *compare_operator(const char *oper);
+const char *compare_operator(const char *);
+const char *compare_function(const char *);
+const char *compare_composite_function(const char *);
+const char *compare_function_operand(const char *);
+void call_function(const char *, const char *);
