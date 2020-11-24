@@ -9,9 +9,12 @@
 #define OPERATOR_RIGHT_PARENS ")"
 
 /* symbol between anterior and posterior */
-#define STRIDE "->" 
+#define COMPARE "<->" 
 
 #define OPERATOR_FUNCTION_CALL "funcall"
+
+/* It follows that */
+#define STRIDE "->"
 
 /* Theorem Prover predicate */
 
