@@ -26,6 +26,6 @@
 typedef struct _tppredicate {
 	void *antitems; // anterior items
 	void *postitems; //posterior items	
-} *TPPredicate;
+} *TPPredicatePtr;
 
 
