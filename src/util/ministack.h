@@ -18,4 +18,4 @@ _StackPtr make_stack(_StackPtr);
 void free_stack(_StackPtr);
 
 void push_on_stack(const char *, _StackPtr);
-_StackItemPtr pop_from_stack(const char *, _StackPtr);
+char *pop_from_stack(_StackPtr);

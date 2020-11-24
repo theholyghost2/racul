@@ -20,7 +20,7 @@ void push_on_stack(const char *str, _StackPtr sp)
 	sp->stk[++(sp->index)] = strdup(str);
 }
 
-_StackItemPtr pop_from_stack(const char *str, _StackPtr sp)
+char *pop_from_stack(_StackPtr sp)
 {
 	/* does not test for empty stack */
 	return (sp->stk[sp->index--]); /* && sp->stk[index--] = (const char *)0); */
