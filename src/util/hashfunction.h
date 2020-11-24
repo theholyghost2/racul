@@ -25,5 +25,7 @@ long hashf(unsigned long size, _HashFunctionPtr hfp);
 #ifdef _HASH_FUNCTION_CHAOS0
 //FIXME	
 #else
+/* Hawking Boltzmann model random used : */
+long hash_with_modulus_boltzmann(double, _BoltzmannListPtr, unsigned long);
 long hash_with_modulus(long); 
 #endif

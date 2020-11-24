@@ -1,5 +1,6 @@
 /* Copyright (C) The Holy Ghost 2020. See the LICENSE file for details */
 #include "hashfunction.h"
+#include "boltzmanndistribution.h"
 
 #include<stdlib.h>
 
@@ -30,7 +31,12 @@ long hashf(unsigned long size, _HashFunctionPtr hfp)
 	return hfp->func(size);
 }
 
-long hash_with_modulus(unsigned long size = LONG_MAX)
+long hash_with_modulus_boltzmann(double d, _BoltzmannListPtr blp, unsigned long size = LONG_MAX)
 {
-	return (random() % size);
+	return (random_hawking_boltzmann_model(d, blp) % size);
+}
+
+long hash_with_modulus(long size = LONG_MAX)
+{	
+	return random() % size;
 }

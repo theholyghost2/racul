@@ -18,7 +18,7 @@ long random_hawking_boltzmann_model(long i, double solarmass, _BoltzmannListPtr 
 
 	double p = exp(- blp->lst[i] / (1.380649 * pow(10, -23) * Ht));
 
-	if (abs(p) <= 1 && abs(p) >= -1 && abs(p) != 0) {
+	if (abs(p) <= 1 && abs(p) >= -1 && abs(p) != 0.0) {
 		return 1 / T;
 	}
 
