@@ -29,6 +29,9 @@
 #define OPERATOR_FUNCTION_++ "++"
 #define OPERATOR_FUNCTION_-- "--"
 
+#define OPERATOR_FUNCTION_VARIABLE "var"
+#define OPERATOR_FUNCTION_CONST "const"
+
 /* composite functions */
 
 #define OPERATOR_FUNCTION_ITERATOR "iterator"
