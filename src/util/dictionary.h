@@ -2,14 +2,14 @@
 
 typedef struct _key {
 	void *x;
-	int i; // for e.g. functional hashing
+	long i; // for e.g. functional hashing
 } DKey;
 
 typedef struct _key *DKeyPtr;
 
 typedef struct _value {
 	void *y; // value of symbol
-	int i; // symbol table hex (memory ref) 
+	long i; // symbol table hex (memory ref) 
 } DValue;
 
 typedef struct _value *DValuePtr;
@@ -28,16 +28,16 @@ typedef DPairPtr *DictionaryCorePtr;
 DictionaryCorePtr make_dictionary(long, DictionaryCorePtr);
 void free_dictionary(DictionaryCorePtr);
 
-/* get, set and access, hexadecimal keys are integers, common functions use 
+/* get, set and access, hexadecimal keys are long ints, common functions use 
  * void* pointer
  */
 
 /* The dictionary has no NULL keys (FIXME if needed, use hexkey functions) */
 void add_to_dictionary(void *, void *, DictionaryCorePtr);
-void add_to_dictionary_hexkey(int, void *, DictionaryCorePtr);
-void add_to_dictionary_hexkey_hexsymbol(int, int, void *, DictionaryCorePtr);
+void add_to_dictionary_hexkey(long, void *, DictionaryCorePtr);
+void add_to_dictionary_hexkey_hexsymbol(long, long, void *, DictionaryCorePtr);
 void* search_dictionary(void *, DictionaryCorePtr);
-void* search_dictionary_hexkey(int, DictionaryCorePtr);
+void* search_dictionary_hexkey(long, DictionaryCorePtr);
 void delete_from_dictionary(void *, DictionaryCorePtr);
-void delete_from_dictionary_hexkey(int, DictionaryCorePtr);
+void delete_from_dictionary_hexkey(long, DictionaryCorePtr);
 

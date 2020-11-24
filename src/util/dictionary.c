@@ -67,7 +67,7 @@ void add_to_dictionary(void *xkey, void *yvalue, DictionaryCorePtr d)
 	return;
 }
 
-void add_to_dictionary_hexkey(int xkey, void *yvalue, DictionaryCorePtr d)
+void add_to_dictionary_hexkey(long xkey, void *yvalue, DictionaryCorePtr d)
 {
 	DPairPtr p = (DPairPtr)malloc(sizeof DPairPtr);
 	int len = sizeof(d) / sizeof DPairPtr;
@@ -89,7 +89,7 @@ void add_to_dictionary_hexkey(int xkey, void *yvalue, DictionaryCorePtr d)
 	return;
 }
 
-void add_to_dictionary_hexkey_hexsymbol(int xkey, int yi, void *yvalue, DictionaryCorePtr d)
+void add_to_dictionary_hexkey_hexsymbol(long xkey, long yi, void *yvalue, DictionaryCorePtr d)
 {
 	DPairPtr p = (DPairPtr)malloc(sizeof DPairPtr);
 	int len = sizeof(d) / sizeof DPairPtr;
@@ -124,7 +124,7 @@ void* search_dictionary(void *key, DictionaryCorePtr d)
 		return (*d--)->value;
 }
 
-void* search_dictionary_hexkey(int key, DictionaryCorePtr d)
+void* search_dictionary_hexkey(long key, DictionaryCorePtr d)
 {
 	int len = sizeof(d) / sizeof DPairPtr;
 
@@ -154,7 +154,7 @@ void delete_from_dictionary(void *key, DictionaryCorePtr d)
 	p = *d;	
 }
 
-void delete_from_dictionary_hexkey(int key, DictionaryCorePtr d)
+void delete_from_dictionary_hexkey(long key, DictionaryCorePtr d)
 {
 	int len = sizeof(d) / sizeof DPairPtr;
 	DPairPtr p = *d;
