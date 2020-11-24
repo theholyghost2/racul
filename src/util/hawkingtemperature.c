@@ -2,6 +2,19 @@
 #include "hawkingtemperature.h"
 
 #include <math.h>
+#include <stdlib.h>
+
+long random_hawkingt(double)
+{
+	double T = hawking_temperature_div_solarmass(random());
+
+	if (abs(T) <= 1 && abs(T) >= -1 && abs(T) != 0.0) {
+		return 1 / T;
+	} else {
+		return T;
+	}
+}
+
 
 double hawking_temperature(double blackholemass)
 {	
