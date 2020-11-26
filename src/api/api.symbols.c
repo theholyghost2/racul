@@ -1,20 +1,20 @@
 /* Copyright (C) The Holy Ghost 2020. See the LICENSE file for details */
 
-#include <stdlib.> /* includes malloc and NULL */
+#include <stdlib.h> /* includes malloc and NULL */
 
 #include "variablesymbol.h"
 #include "lambdasymbol.h"
 
 /* interface definitions */
 
-# define _Variable VariablePtr
-# define _Lambda LambdaPtr
+typedef _Variable VariablePtr;
+typedef _Lambda LambdaPtr;
 
 /* symbol constructors, destructors */
 
 void *make_lambda_symbol(void *xvalue)
 {
-	LambdaPtr lp = (LambdaPtr)malloc(sizeof LambdaPtr);
+	LambdaPtr lp = (LambdaPtr)malloc(sizeof(LambdaPtr));
 	lp->blob = xvalue;
 	lp->x = NULL; /* raw unprocessed symbol */
 	return (void *)lp;
@@ -31,9 +31,9 @@ void free_lambda_symbol(void *lsym)
 
 void *make_variable_symbol(void *xvalue)
 {
-	Variable vp = (Variable)malloc(sizeof Variable);
+	VariablePtr vp = (VariablePtr)malloc(sizeof(VariablePtr));
 	vp->blob = xvalue;
-	vp->typeid = NULL; /* raw unprocessed symbol */
+	/*vp->typeid = NULL;*/ /* raw unprocessed symbol */
 	return (void *)vp;
 }
 	
@@ -57,13 +57,13 @@ void *get_lambda_symbol_value(void *lsym)
 
 int get_variable_symbol_type(void *vsym)
 {
-	VariablePtr vp = (VariablePtr)lsym;
+	VariablePtr vp = (VariablePtr)vsym;
 	return vp->typeid;
 }
 
 void *get_variable_symbol_value(void *vsym)
 {
-	VariablePtr vp = (VariablePtr)lsym;
+	VariablePtr vp = (VariablePtr)vsym;
 	return vp->blob;
 }
 

@@ -19,10 +19,10 @@ long random_hawking_boltzmann_model(long i, double solarmass, _BoltzmannListPtr 
 	double p = exp(- blp->lst[i] / (1.380649 * pow(10, -23) * Ht));
 
 	if (abs(p) <= 1 && abs(p) >= -1 && abs(p) != 0.0) {
-		return 1 / T;
+		return 1 / p; 
 	}
 
-	return T;
+	return p;
 }	
 
 /* utility functions */
@@ -45,9 +45,11 @@ void free_boltzmannlist(_BoltzmannListPtr blp)
 
 void add_to_boltzmannlist(double d, _BoltzmannListPtr blp)
 {
+	_BoltzmannListPtr blp2 = blp;
 	int i;
 	for (int i = 0; blp->lst++ != 0 || i >= blp->size; i++)
-		;
+		(blp->lst)++;
 
-	blp->lst+i = d;
+	(*(blp->lst)) = d;
+	blp = blp2;
 }

@@ -15,6 +15,8 @@
  * threaded systems, as an OOP example.
  */
 
+#ifndef __SYM_H_
+#define __SYM_H_
 
 /* Hex system for ELF */
 typedef int Hex;
@@ -67,7 +69,7 @@ typedef struct _xsymbol {
 #define variablep(symbol) \
 	return variable(symbol) != (void*)0 ? 1 : 0
 
-#define hexp(symbol) \
+#define lambdap(symbol) \
 	return lambda(symbol) != (void*)0 ? 1 : 0
 
-
+#endif

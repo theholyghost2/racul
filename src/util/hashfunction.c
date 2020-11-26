@@ -14,7 +14,8 @@ _HashFunctionPtr make_hashfunction(_HashFunctionPtr hfp)
 #ifdef _HASH_FUNCTION_CHAOS0
 //FIXME
 #else
-	hfp->func = (long)(*)(unsigned long)(&(hash_with_modulus));
+	//holly hfp->func = (long)(*)(unsigned long)(&(hash_with_modulus));
+	hfp->func = &(hash_with_modulus);
 #endif
 	return hfp;
 }
@@ -31,12 +32,12 @@ long hashf(unsigned long size, _HashFunctionPtr hfp)
 	return hfp->func(size);
 }
 
-long hash_with_modulus_boltzmann(double d, _BoltzmannListPtr blp, unsigned long size = LONG_MAX)
+long hash_with_modulus_boltzmann(double d, _BoltzmannListPtr blp, unsigned long size)
 {
-	return (random_hawking_boltzmann_model(d, blp) % size);
+	return (random_hawking_boltzmann_model(random(), d, blp) % size);
 }
 
-long hash_with_modulus(long size = LONG_MAX)
+long hash_with_modulus(long size)
 {	
 	return random() % size;
 }

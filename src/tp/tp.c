@@ -6,27 +6,27 @@
 const char* compare_operator(const char *oper)
 {
 	switch(atoi(oper)) {
-		case 	atoi(OPERATOR_AND):{
+		case OPERATOR_AND_N:{
 			return OPERATOR_AND;
 			//break;
 		}
-		case 	atoi(OPERATOR_OR):{
+		case 	OPERATOR_OR_N:{
 			return OPERATOR_OR;
 			//break;
 		}
-		case 	atoi(OPERATOR_NOT):{
+		case 	OPERATOR_NOT_N:{
 			return OPERATOR_NOT;
 			//break;
 		}
-		case 	atoi(OPERATOR_LEFT_PARENS):{
+		case 	OPERATOR_LEFT_PARENS_N:{
 			return OPERATOR_LEFT_PARENS;
 			//break;
 		}
-		case 	atoi(OPERATOR_RIGHT_PARENS):{
+		case 	OPERATOR_RIGHT_PARENS_N:{
 			return OPERATOR_RIGHT_PARENS;
 			//break;
 		}
-		case 	atoi(OPERATOR_FUNCTION_CALL):{
+		case 	OPERATOR_FUNCTION_CALL_N:{
 			return OPERATOR_FUNCTION_CALL;
 			//break;
 		}
@@ -42,55 +42,61 @@ const char* compare_operator(const char *oper)
 const char* compare_function(const char *foper)
 {
 	switch(atoi(foper)) {
-		case 	atoi(OPERATOR_FUNCTION_CALL):{
+		case 	OPERATOR_FUNCTION_CALL_N:{
 			/* hybrid for composite and common functions */
 			return OPERATOR_FUNCTION_CALL;
 			//break;
 		}
-		case 	atoi(OPERATOR_FUNCTION_PLUS):{
+		case 	OPERATOR_FUNCTION_PLUS_N:{
 			return OPERATOR_FUNCTION_PLUS;
 			//break;
 		}
-		case 	atoi(OPERATOR_FUNCTION_MINUS):{
+		case 	OPERATOR_FUNCTION_MINUS_N:{
 			return OPERATOR_FUNCTION_MINUS;
 			//break;
 		}
-		case 	atoi(OPERATOR_FUNCTION_PRODUCT):{
+		case 	OPERATOR_FUNCTION_PRODUCT_N:{
 			return OPERATOR_FUNCTION_PRODUCT;
 			//break;
 		}
-		case 	atoi(OPERATOR_FUNCTION_DIVISION):{
+		case 	OPERATOR_FUNCTION_DIVISION_N:{
 			return OPERATOR_FUNCTION_DIVISION;
 			//break;
 		}
-		case 	atoi(OPERATOR_FUNCTION_++):{
-			return OPERATOR_FUNCTION_++;
+		case 	OPERATOR_FUNCTION_PLUSPLUS_N:{
+			return OPERATOR_FUNCTION_PLUSPLUS;
 			//break;
 		}
-		case 	atoi(OPERATOR_FUNCTION_--):{
-			return OPERATOR_FUNCTION_--;
+		case 	OPERATOR_FUNCTION_MINUSMINUS_N:{
+			return OPERATOR_FUNCTION_MINUSMINUS;
 			//break;
 		}
 		default:
 			return NULL;
 	   		//break;
+	}
+	//never reached 
+	return NULL;
 }	
 
 const char* compare_composite_function(const char *foper)
 {
 	switch(atoi(foper)) {
-		case 	atoi(OPERATOR_FUNCTION_COMPOSITE_CALL):{
+		case 	OPERATOR_FUNCTION_COMPOSITE_CALL_N:{
 			/* hybrid for composite and common functions */
 			return OPERATOR_FUNCTION_CALL;
 			//break;
 		}
-		case 	atoi(OPERATOR_FUNCTION_ITERATOR):{
+		case 	OPERATOR_FUNCTION_ITERATOR_N:{
 			return OPERATOR_FUNCTION_ITERATOR;
 			//break;
 		}
 		default:
 			return NULL;
 	   		//break;
+	}
+	//never reached 
+	return NULL;
 }	
 
 const char *compare_function_operand(const char *foperand)
@@ -98,6 +104,8 @@ const char *compare_function_operand(const char *foperand)
 		switch (atoi(foperand)) {
 
 		}	
+
+	return NULL;
 }
 
 void call_function(const char *foper, const char *foperand)

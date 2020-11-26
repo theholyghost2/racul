@@ -1,5 +1,8 @@
 /* Copyright (C) The Holy Ghost 2020. See the LICENSE file for details */
 
+#ifndef _BOUNDSYMBOL_H_
+#define _BOUNDSYMBOL_H_
+
 #include "variablesymbol.h"
 #include "lambdasymbol.h"
 
@@ -51,3 +54,4 @@ typedef struct _xkey {
 # define _boundp (xb) \
 	return (xb->lambda != (void*)0 || xb->var != (void*)0) ? 1 : 0 \	
 
+#endif

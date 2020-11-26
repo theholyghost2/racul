@@ -1,4 +1,6 @@
 /* Copyright (C) The Holy Ghost 2020. See the LICENSE file for details */
+#ifndef _VALIDITIES_H_
+#define _VALIDITIES_H_
 
 /* prefixed logical validities */
 
@@ -37,4 +39,6 @@ const char* validities[] = {
 	/* FIXME "or p not p" */
  	"\0",
 	/* optional */
-}	
+}
+
+#endif

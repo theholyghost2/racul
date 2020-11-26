@@ -1,5 +1,8 @@
 /* Copyright (C) The Holy Ghost 2020. See the LICENSE file for details */
 
+#ifndef _MINISTACK_H_
+#define _MINISTACK_H_
+
 /* A character string storage/stack */
 
 /* non-realloced ! */
@@ -11,7 +14,7 @@ typedef struct _stackitem {
 
 typedef struct _stack {
 	int index;	
-	_StackItemPtr *stk;
+	_StackItemPtr stk;
 } *_StackPtr;
 
 _StackPtr make_stack(_StackPtr);
@@ -19,3 +22,5 @@ void free_stack(_StackPtr);
 
 void push_on_stack(const char *, _StackPtr);
 const char *pop_from_stack(_StackPtr);
+
+#endif

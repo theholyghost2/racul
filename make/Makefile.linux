@@ -8,6 +8,21 @@ OBJS= src/symbols/lambdasymbol.o \
 	src/symbols/boundsymbol.o \
 	src/symbols/freesymbol.o \
 	src/api/api.symbols.o \
+	src/tp/functions.o \
+	src/tp/tp.o \
+	src/tp/tppredicate.o \
+	src/util/dictionary.o \
+	src/util/hash.o \
+	src/util/hashfunction.o \
+	src/util/boltzmanndistribution.o \
+	src/util/hawkingtemperature.o \
+	src/util/ministack.o \
+
+### file header files
+DEPS= \
+
+
+CFLAGS= -I./src/symbols -I./src/api -I./src/util 
 
 all: ${OBJS}
 	${CC} -shared -o libracul.so ${OBJS}  
@@ -15,4 +30,6 @@ all: ${OBJS}
 clean:
 	rm -f libracul.so ${OBJS}
 
-.c.o: ${CC} -I./src/symbols -I./src/api -c $<
+### holly .c.o: ${CC} ${CFLAGS} -c $<
+%.o: %.c $(DEPS)
+	$(CC) $(CFLAGS) -c -o $@ $< 

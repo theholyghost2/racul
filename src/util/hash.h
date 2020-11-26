@@ -1,4 +1,8 @@
 /* Copyright (C) The Holy Ghost 2020. See the LICENSE file for details */
+
+#ifndef _HASH_H_
+#define _HASH_H_
+
 #include "dictionary.h"
 #include "hashfunction.h"
 
@@ -11,11 +15,13 @@ typedef struct _hash {
 
 /* accessor of hash ptr */
 
+/***
 #define hashfunction(h) \
-	return h->hfp \
+	return h->hashf \
 
 #define hashdict(h) \
-       return h->dict \
+	return h->dict \
+***/
 
 /* constructors, destructors */
 
@@ -31,3 +37,4 @@ void* search_hash(void *, HashCorePtr);
 void* search_hash_hexkey(int, HashCorePtr);
 void delete_from_hash(void *, HashCorePtr);
 
+#endif

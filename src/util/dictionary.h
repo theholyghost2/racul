@@ -1,5 +1,8 @@
 /* Copyright (C) The Holy Ghost 2020. See the LICENSE file for details */
 
+#ifndef _DICTIONARY_H_
+#define _DICTIONARY_H_
+
 typedef struct _key {
 	void *x;
 	long i; // for e.g. functional hashing
@@ -41,3 +44,4 @@ void* search_dictionary_hexkey(long, DictionaryCorePtr);
 void delete_from_dictionary(void *, DictionaryCorePtr);
 void delete_from_dictionary_hexkey(long, DictionaryCorePtr);
 
+#endif

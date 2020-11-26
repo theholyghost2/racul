@@ -4,7 +4,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-long random_hawkingt(double)
+long random_hawkingt()
 {
 	double T = hawking_temperature_div_solarmass(random());
 
@@ -20,7 +20,7 @@ double hawking_temperature(double blackholemass)
 {	
 	return (6.582119569 * pow(10, -16) * pow(299792458, 3)) /
 		(8 * M_PI * 6.6743015 * pow(10, -11) * 1.380649 * pow(10, -23) 
-		 * solarmass);
+		 * blackholemass);
 }
 
 double hawking_temperature_div_solarmass(double quotient)

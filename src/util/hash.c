@@ -5,19 +5,20 @@
 
 HashCorePtr make_hash(long len, HashCorePtr hp)
 {
-	DictionaryCorePtr dcp = hashdict(h);
+	DictionaryCorePtr dcp = hp->dict;
 	hp->dict = make_dictionary(len, dcp);
 	//hash func
-	hp->hashf = make_hashfunction(hp);	
+	_HashFunctionPtr hfp;	
+	hp->hashf = make_hashfunction(hfp);	
 
 	return hp;
 }
 
 void free_hash(HashCorePtr hp)
 {
-	free_dictionary(hashdict(h));
+	free_dictionary(hp->dict);
 	// hash func
-	free_hashfunction(hp);
+	free_hashfunction(hp->hashf);
 }
 
 /* get, set and access */
@@ -33,16 +34,16 @@ void add_to_hash_hexkey(int xi, void *value, HashCorePtr hp)
 	add_to_dictionary_hexkey(xi, value, hp->dict);
 }
 
-void search_hash(void *key, HashCorePtr hp)
+void* search_hash(void *key, HashCorePtr hp)
 {
-	return (search_dictionary_hexkey(key, hp->dict));
+	return (search_dictionary(key, hp->dict));
 }
 
-void search_hash_hexkey(int xi, HashCorePtr hp)
+void* search_hash_hexkey(int xi, HashCorePtr hp)
 {
 	return (search_dictionary_hexkey(xi, hp->dict));
 }
 
-void delete_from_hash(void *, HashCorePtr)
+void delete_from_hash(void *key, HashCorePtr hp)
 {}
 
