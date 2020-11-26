@@ -17,5 +17,7 @@ void add_to_boltzmannlist(double, _BoltzmannListPtr);
 
 /* main random function */
 long random_hawking_boltzmann_model(long i, double solarmass, _BoltzmannListPtr blp);
+/* random distribution */
+long random_hawking_boltzmann_model_random_dist(long i, long size, double solarmass);
 
 #endif

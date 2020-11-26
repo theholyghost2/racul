@@ -14,7 +14,8 @@ long random_hawking_boltzmann_model(long i, double solarmass, _BoltzmannListPtr 
 
 	/* Sigma(e/Q(e)) */
 	for (int i = 0; i < blp->size; i++) {
-		Q += exp(- random() / (1.380649 * pow(10, -23) * Ht));		
+		// Q += exp(- random() / (1.380649 * pow(10, -23) * Ht));		
+		Q += exp(- blp->lst[i] / (1.380649 * pow(10, -23) * Ht));		
 	}
 
 	/* energy state e */
@@ -27,6 +28,28 @@ long random_hawking_boltzmann_model(long i, double solarmass, _BoltzmannListPtr 
 
 	return p;
 }	
+
+long random_hawking_boltzmann_model_random_dist(long i, long size, double solarmass)
+{
+	long Ht = random_hawkingt(solarmass); 
+	double Q = 0.0;
+
+	/* Sigma(e/Q(e)) */
+	for (int i = 0; i < size; i++) {
+		Q += exp(- random() / (1.380649 * pow(10, -23) * Ht));		
+	}
+
+	/* energy state e */
+	double p = exp(- random()/ (1.380649 * pow(10, -23) * Ht));
+	p = p / Q;
+
+	if (abs(p) <= 1 && abs(p) >= -1 && abs(p) != 0.0) {
+		return 1 / p; 
+	}
+
+	return p;
+}	
+
 
 /* utility functions */
 _BoltzmannListPtr make_boltzmannlist(long size, _BoltzmannListPtr blp)
