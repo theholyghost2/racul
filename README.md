@@ -14,4 +14,4 @@ Synopsis :
 Installation instructions :
 
 	run 'make -f make/Makefile.X' in the toplevel directory, where X is 
-	your OS.
+	your OS. Only linux and unix makefiles work for now.
