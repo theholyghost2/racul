@@ -12,11 +12,14 @@ long random_hawking_boltzmann_model(long i, double solarmass, _BoltzmannListPtr 
 	long Ht = random_hawkingt(solarmass); 
 	double Q = 0.0;
 
+	/* Sigma(e/Q(e)) */
 	for (int i = 0; i < blp->size; i++) {
 		Q += exp(- random() / (1.380649 * pow(10, -23) * Ht));		
 	}
 
+	/* energy state e */
 	double p = exp(- blp->lst[i] / (1.380649 * pow(10, -23) * Ht));
+	p = p / Q;
 
 	if (abs(p) <= 1 && abs(p) >= -1 && abs(p) != 0.0) {
 		return 1 / p; 
